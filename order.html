@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pemesanan | andin.dessert</title>
+    <style>
+        /* Reset & Base Styles (Konsisten dengan Katalog) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fff9f6;
+            color: #4a3e3d;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4a373;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #faedcd;
+            background-color: #d4a373;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 1.3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4a3e3d;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4a373;
+        }
+
+        /* Header Pemesanan */
+        .order-header {
+            text-align: center;
+            padding: 3rem 5% 2rem;
+            background-color: #faedcd;
+            color: #4a3e3d;
+        }
+
+        .order-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Container Utama Form */
+        .order-container {
+            max-width: 650px;
+            margin: 3rem auto 5rem;
+            padding: 0 5%;
+        }
+
+        .order-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(212, 163, 115, 0.08);
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #4a3e3d;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #faedcd;
+            border-radius: 10px;
+            background-color: #fff9f6;
+            color: #4a3e3d;
+            font-size: 1rem;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #d4a373;
+            background-color: #ffffff;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Tombol Kirim */
+        .submit-btn {
+            width: 100%;
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #c39262;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4a3e3d;
+            color: #faedcd;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav a {
+                margin: 0 1rem;
+            }
+            .order-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">andin.<span>dessert</span></a>
+        <nav>
+            <a href="/index (1).html">Home</a>
+            <a href="/tentang.html">Tentang</a>
+            <a href="/katalog.html">Menu</a>
+            <a href="/index.html#kontak">Kontak</a>
+        </nav>
+    </header>
+
+    <section class="order-header">
+        <h1>Formulir Pemesanan</h1>
+        <p>Isi data di bawah ini untuk memproses pesanan manis Anda.</p>
+    </section>
+
+    <main class="order-container">
+        <div class="order-card">
+            <!-- Form memanggil fungsi sendToWhatsApp saat disubmit -->
+            <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
+                
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" class="form-control" placeholder="Masukkan nama Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nohp">Nomor WhatsApp Aktif</label>
+                    <input type="tel" id="nohp" class="form-control" placeholder="Contoh: 081234567xxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="menu">Pilih Menu Dessert</label>
+                    <select id="menu" class="form-control" required>
+                        <option value="" disabled selected>-- Pilih Menu Dessert --</option>
+                        <option value="Classic Tiramisu (Rp 45.000)">Classic Tiramisu - Rp 45.000</option>
+                        <option value="Matcha Tres Leches (Rp 48.000)">Matcha Tres Leches - Rp 48.000</option>
+                        <option value="Strawberry Cheese Tart (Rp 120.000)">Strawberry Cheese Tart - Rp 120.000</option>
+                        <option value="Choco Lava Cookies (Rp 25.000)">Choco Lava Cookies - Rp 25.000</option>
+                        <option value="Fudgy Brownies (Rp 35.000)">Fudgy Brownies - Rp 35.000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="jumlah">Jumlah Porsi / Box</label>
+                    <input type="number" id="jumlah" class="form-control" min="1" value="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat">Alamat Lengkap Pengiriman</label>
+                    <textarea id="alamat" class="form-control" placeholder="Masukkan alamat lengkap rumah / lokasi pengiriman" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="catatan">Catatan Tambahan (Opsional)</label>
+                    <textarea id="catatan" class="form-control" placeholder="Contoh: Request tulisan 'Happy Birthday', tingkat kemanisan, dll."></textarea>
+                </div>
+
+                <!-- Menggunakan tipe submit agar validasi 'required' pada form tetap berjalan -->
+                    <a href="/bayar.html" class="submit-btn" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">
+                        <span>Bayar Sekarang</span>
+                    </a>
+
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 andin.dessert. Dibuat dengan Rasa Manis.</p>
+    </footer>
+
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault(); // Mencegah page refresh bawaan form
+
+            // Mengambil data dari inputan form
+            const nama = document.getElementById('nama').value;
+            const nohp = document.getElementById('nohp').value;
+            const menu = document.getElementById('menu').value;
+            const jumlah = document.getElementById('jumlah').value;
+            const alamat = document.getElementById('alamat').value;
+            const catatan = document.getElementById('catatan').value || "-";
+
+            // Menyimpan data pesanan ke localStorage agar bisa dibaca di halaman pembayaran.html
+            localStorage.setItem('order_nama', nama);
+            localStorage.setItem('order_menu', menu);
+            localStorage.setItem('order_jumlah', jumlah);
+            localStorage.setItem('order_total_pembayaran', hitungTotal(menu, jumlah)); 
+
+            // Mengarahkan langsung ke halaman pembayaran.html setelah data aman disimpan
+            window.location.href = "pembayaran.html";
+        }
+
+        // Fungsi pembantu untuk mendeteksi string harga dan menghitung total otomatis
+        function hitungTotal(menuText, jumlah) {
+            let harga = 0;
+            if (menuText.includes("45.000")) harga = 45000;
+            else if (menuText.includes("48.000")) harga = 48000;
+            else if (menuText.includes("120.000")) harga = 120000;
+            else if (menuText.includes("25.000")) harga = 25000;
+            else if (menuText.includes("35.000")) harga = 35000;
+            return harga * parseInt(jumlah);
+        }
+    </script>
+</body>
+</html>

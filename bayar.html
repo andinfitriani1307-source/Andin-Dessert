@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruksi Pembayaran | andin.dessert</title>
+    <style>
+        /* Reset & Base Styles (Konsisten) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fff9f6;
+            color: #4a3e3d;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4a373;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #faedcd;
+            background-color: #d4a373;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 1.3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4a3e3d;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4a373;
+        }
+
+        /* Header */
+        .payment-header {
+            text-align: center;
+            padding: 3rem 5% 2rem;
+            background-color: #faedcd;
+            color: #4a3e3d;
+        }
+
+        .payment-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Main Container */
+        .payment-container {
+            max-width: 650px;
+            margin: 3rem auto 5rem;
+            padding: 0 5%;
+        }
+
+        .payment-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(212, 163, 115, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        /* Ringkasan Pesanan */
+        .summary-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-bottom: 2px dashed #faedcd;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: #d4a373;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .total-box {
+            background-color: #fff9f6;
+            border: 2px solid #d4a373;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .total-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #d4a373;
+        }
+
+        /* Metode Pembayaran */
+        .method-box {
+            border: 1px solid #faedcd;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #ffffff;
+        }
+
+        .method-title {
+            font-weight: 700;
+            color: #4a3e3d;
+            margin-bottom: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .norek {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #c39262;
+            letter-spacing: 1px;
+            background: #fff9f6;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0.3rem 0;
+        }
+
+        /* Tombol Konfirmasi */
+        .confirm-btn {
+            width: 100%;
+            background-color: #25D366; /* Warna WhatsApp resmi */
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .confirm-btn:hover {
+            background-color: #128C7E;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4a3e3d;
+            color: #faedcd;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; }
+            nav a { margin: 0 1rem; }
+            .payment-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">andin.<span>dessert</span></a>
+        <nav>
+            <a href="/index (1).html">Home</a>
+            <a href="/tentang.html">Tentang</a>
+            <a href="/katalog.html">Menu</a>
+            <a href="/index.html#kontak">Kontak</a>
+        </nav>
+    </header>
+
+    <section class="payment-header">
+        <h1>Selesaikan Pembayaran Anda</h1>
+        <p>Sedikit langkah lagi sebelum dessert manis Anda kami proses!</p>
+    </section>
+
+    <main class="payment-container">
+        
+        <div class="payment-card">
+            <h2 class="summary-title">Ringkasan Tagihan</h2>
+            <div class="summary-row">
+                <span>Nama Pelanggan:</span>
+                <strong id="displayNama">-</strong>
+            </div>
+            <div class="summary-row">
+                <span>Produk:</span>
+                <strong id="displayMenu">-</strong>
+            </div>
+            <div class="summary-row">
+                <span>Jumlah:</span>
+                <strong id="displayJumlah">-</strong>
+            </div>
+            
+            <div class="total-box">
+                <p>Total Yang Harus Ditransfer:</p>
+                <div class="total-price" id="displayTotal">Rp 0</div>
+            </div>
+        </div>
+
+        <div class="payment-card">
+            <h2 class="summary-title">Pilihan Rekening Transfer</h2>
+            
+            <div class="method-box">
+                <div class="method-title"><span>BANK BCA</span><span>A/N Andini Putri</span></div>
+                <div class="norek">123-4567-890</div>
+                <p style="font-size: 0.85rem; color: #7a6f6d;">Silakan transfer tepat sesuai total nominal di atas.</p>
+            </div>
+
+            <div class="method-box">
+                <div class="method-title"><span>DANA (E-Wallet)</span><span>A/N Andini Putri</span></div>
+                <div class="norek">0812-3456-7890</div>
+                <p style="font-size: 0.85rem; color: #7a6f6d;">Bisa transfer melalui sesama DANA atau bank lain.</p>
+            </div>
+
+            <p style="font-size: 0.9rem; color: #7a6f6d; text-align: center; margin: 1.5rem 0 1rem;">
+                *Setelah melakukan transfer, harap simpan bukti struk/screenshot pembayaran Anda.
+            </p>
+
+            <button class="confirm-btn" onclick="konfirmasiWA()">
+                Konfirmasi Pembayaran via WhatsApp
+            </button>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 andin.dessert. Dibuat dengan Rasa Manis.</p>
+    </footer>
+
+    <script>
+        // Jalankan script ini begitu halaman selesai dimuat
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mengambil data dari localStorage yang disimpan dari halaman order.html
+            const nama = localStorage.getItem('order_nama') || "Pelanggan";
+            const menu = localStorage.getItem('order_menu') || "Menu Dessert";
+            const jumlah = localStorage.getItem('order_jumlah') || "1";
+            const total = localStorage.getItem('order_total_pembayaran') || "0";
+
+            // Format mata uang Rupiah
+            const formatter = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            });
+
+            // Menampilkan data ke elemen HTML
+            document.getElementById('displayNama').innerText = nama;
+            document.getElementById('displayMenu').innerText = menu;
+            document.getElementById('displayJumlah').innerText = jumlah + "x";
+            document.getElementById('displayTotal').innerText = formatter.format(total);
+        });
+
+        function konfirmasiWA() {
+            // Ambil kembali data terbaru dari halaman untuk dikirim ke WA
+            const nama = document.getElementById('displayNama').innerText;
+            const menu = document.getElementById('displayMenu').innerText;
+            const jumlah = document.getElementById('displayJumlah').innerText;
+            const total = document.getElementById('displayTotal').innerText;
+
+            // Ganti ke nomor WhatsApp toko Anda (Gunakan kode negara 62)
+            const nomorWhatsApp = "628123456789"; 
+
+            // Format isi template pesan konfirmasi
+            const teksPesan = 
+                `*KONFIRMASI PEMBAYARAN - ANDIN DESSERT*%0A%0A` +
+                `Halo Andin Dessert, saya sudah melakukan pembayaran dengan detail berikut:%0A%0A` +
+                `- *Nama Pemesan:* ${nama}%0A` +
+                `- *Pesanan:* ${menu} (${jumlah})%0A` +
+                `- *Total Transfer:* ${total}%0A%0A` +
+                `Berikut saya lampirkan bukti transfernya. Mohon segera dicek dan diproses ya! ✨`;
+
+            const urlWhatsApp = `https://wa.me/${nomorWhatsApp}?text=${teksPesan}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</body>
+</html>
